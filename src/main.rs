@@ -28,7 +28,7 @@ fn main() {
             }
             Err(_err) => println!("Could not write file."),
         }
-        println!("Palm detection disabled.");
+        println!("Palm detection is now: DISABLED.");
     } else if data.contains("dwt disabled") {
         let new_data = data.replace("dwt disabled", "dwt enabled");
         let new_file = File::create(config_path);
@@ -43,6 +43,6 @@ fn main() {
             }
             Err(_err) => println!("Could not write file."),
         }
-        println!("Palm detection enabled.")
+        println!("Palm detection is now: ENABLED.")
     }
 }
