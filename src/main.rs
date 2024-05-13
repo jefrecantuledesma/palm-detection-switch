@@ -1,4 +1,5 @@
 use expanduser::expanduser;
+use notify_rust::{Hint, Notification, Timeout};
 use std::fs::File;
 use std::io::prelude::*;
 use std::process::Command;
@@ -29,6 +30,15 @@ fn main() {
             Err(_err) => println!("Could not write file."),
         }
         println!("Palm detection is now: DISABLED.");
+        Notification::new()
+            .summary("DISABLED")
+            .body("Palm detection switched.")
+            .icon("dialog-information")
+            .appname("palm-detection-switch")
+            .hint(Hint::Category("Device".to_owned()))
+            .timeout(Timeout::Milliseconds(10000))
+            .show()
+            .unwrap();
     } else if data.contains("dwt disabled") {
         let new_data = data.replace("dwt disabled", "dwt enabled");
         let new_file = File::create(config_path);
@@ -43,6 +53,15 @@ fn main() {
             }
             Err(_err) => println!("Could not write file."),
         }
-        println!("Palm detection is now: ENABLED.")
+        println!("Palm detection is now: ENABLED.");
+        Notification::new()
+            .summary("ENABLED")
+            .body("Palm detection switched.")
+            .icon("dialog-information")
+            .appname("palm-detection-switch")
+            .hint(Hint::Category("Device".to_owned()))
+            .timeout(Timeout::Milliseconds(10000))
+            .show()
+            .unwrap();
     }
 }
