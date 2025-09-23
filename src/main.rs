@@ -31,8 +31,8 @@ fn main() {
         }
         println!("Palm detection is now: DISABLED.");
         Notification::new()
-            .summary("DISABLED")
-            .body("Palm detection switched.")
+            .summary("Palm Detection Switch")
+            .body("Palm detection is now disabled.")
             .icon("dialog-information")
             .appname("palm-detection-switch")
             .hint(Hint::Category("Device".to_owned()))
@@ -55,8 +55,8 @@ fn main() {
         }
         println!("Palm detection is now: ENABLED.");
         Notification::new()
-            .summary("ENABLED")
-            .body("Palm detection switched.")
+            .summary("Palm Detection Switch")
+            .body("Palm detection is now enabled.")
             .icon("dialog-information")
             .appname("palm-detection-switch")
             .hint(Hint::Category("Device".to_owned()))
